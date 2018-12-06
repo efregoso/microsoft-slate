@@ -25,15 +25,32 @@ import sys
 
 def main(argv):
 	# Examine all text files and select the one with the same name as the designated filetype.
-	filename = argv[1]
-	# DEBUG: DO MORE LOOKING INTO THIS RE: ONLY GATHERING FILES *ONLY* FROM CWD
+	if argv[1] == "":
+		filename = input("Enter a line of text that you want converted, surrounded by quotation marks: ")
+	else: 
+		filename = argv[1]
+	print(filename)
+	# Allow for input on the command line for individual sentences.  Begin all sentences with quotation marks, and output will print to command line
 	for root, dirs, files in os.walk(os.getcwd()):
 		if root == os.getcwd():
+			# If the filename doesn't exist, ask if want to translate to command line. 
 			if filename not in files:
-				print("Filename not found!")
-				print(root)
-				print(files)
-				sys.exit(1)
+				newstring_indicators = ""
+				for letter in filename:
+					if letter.isalpha():
+						letter = letter.lower()
+						letter_indicator = ":regional_indicator_" + letter + ":"
+					elif letter.isnumeric():
+						# Dictionary object with spelled out reference. 
+						dict = {"0":"zero", "1": "one", "2":"two", "3":"three", "4":"four", "5":"five", "6":"six", "7":"seven", "8":"eight", "9":"nine"}
+						letter_indicator = ":" + dict[letter] + ":"
+					elif letter.isspace():
+						letter_indicator = " "
+					else:
+						letter_indicator = ""
+					newstring_indicators = newstring_indicators + letter_indicator + " "
+				newstring_indicators = newstring_indicators + "\n"
+				print(newstring_indicators)
 			else:
 				#try:
 				# Check if the filename entered by the user does not have the txt suffix, and add it if not. 
@@ -55,7 +72,6 @@ def main(argv):
 					if buffer is not "\n" and not buffer.isspace():
 						newstring = buffer.rstrip("\n")
 						newstring_indicators = ""
-						# ERROR HANDLING FOR COMMAS, SPACES, NUMBERS, AND SPECIAL CHARACTERS:
 						for letter in newstring:
 							if letter.isalpha():
 								letter = letter.lower()
@@ -76,7 +92,9 @@ def main(argv):
 				# except Exception:
 					# print("Read/write file failed.  Check that you have permission to write to this directly.")
 					# sys.exit(1)
-	# Wake up from a dead faint. 
+				# Wake up from a dead faint. 
+				new.close()
+				orig.close()
 	print("'Where am I...?  WHAT HAPPENED...?!'")
 	# Curtain. 
 	sys.exit(0)
