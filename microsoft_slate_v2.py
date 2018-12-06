@@ -1,11 +1,12 @@
 '''
 =========================
-MICROSOFT_SLATEBOT_V2.PY
+MICROSOFT_SLATE_V2.PY
 =========================
 :Author: Elizabeth
 :Date Created: 2018/11/22
-:Last Updated: 2018/11/22
-:Description: Created to help a medical doctor with social anxiety lose a karaoke competition in a fit of Seinfeld-inspired terror.  Now with Discord-specific emojis!  Even MORE obnoxious!
+:Last Updated: 2018/12/05
+:Description: Created to help a medical doctor with social anxiety lose a karaoke competition in a fit of Seinfeld-inspired terror.  
+Now with Discord-specific emojis!  Even MORE obnoxious!
 
 INSTRUCTIONS FOR USE: 
 1. Place the .txt file that you want to Slate-ify into the same directory as this file.  
